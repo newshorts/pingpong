@@ -58,8 +58,8 @@ class Legs {
   float legGap = w/7.0;
 
   // Dynamics properties
-  float velocity = .02, stepL, stepR, stepRate = random(10, 50); 
-  float speedX = 1.0, speedZ, spring, damping = .5, theta;
+  float velocity = .02, stepL, stepR, stepRate = .50; 
+  float speedX = 1.0, speedZ, spring, damping = .001, theta;
 
   // Default constructor
   Legs() {
@@ -151,8 +151,8 @@ class Legs {
     // and check for collision against extremes
     speedZ = (stepRate*velocity);
     z += speedZ;
-    if (z > 400) {
-      z = 400;
+    if (z > 1000) {
+      z = 1000;
       velocity *= -1;
     }
     if (z < -100) {
