@@ -40,9 +40,9 @@ void draw() {
  */
  
 class Balls {
-  float x = 0, y = 0, z = 0, r = 150;
+  float x = 0, y = 0, z = 0, r = 150, ht = 125;
   color col = #77aa22;
-  float velocity = .02, stepRate = .5;
+  float velocity = .02, stepR, stepRate = .50;
   float speedX = 1.0, speedZ, spring, damping = .001, theta;
   
   Balls() {
@@ -70,7 +70,14 @@ class Balls {
   }
   
   void move() {
-    y = 50;
+    
+    
+    spring = ht/2.0;
+    theta += radians(stepRate);
+    stepR = cos(theta)*spring;
+    
+    y = (stepR*damping);
+    
     x += speedX;
     if(screenX(x,y,z) > width) {
       speedX *= -1;
@@ -79,8 +86,8 @@ class Balls {
       speedX *= -1;
     }
     
-    speedZ = 1;
-    z += speedZ;
+    speedZ += (stepRate*velocity);
+    z *= speedZ;
     if(z > 1000) {
       z = 1000;
       velocity *= -1;
