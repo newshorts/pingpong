@@ -6,7 +6,7 @@ PVector[] vertices = new PVector[24];
 void setup() {
   size(640, 320, P3D);
   // because the vertices are being set and half width and height
-  float w = 2*width, h = 2*height, d = 2*1000;
+  float w = 2*width, h = 2*height, d = 1000;
 //  noStroke();
 //  lights();
 //  smooth();
@@ -54,8 +54,9 @@ void draw() {
   
   for (int i=0; i<6; i++){
     pushMatrix();
+    translate(width/2, height/2);
     stroke(color(255));
-    translate(width/2, height/2, 0);
+    
     beginShape(QUADS);
     for (int j=0; j<4; j++){
       vertex(vertices[j+4*i].x, vertices[j+4*i].y, vertices[j+4*i].z);
@@ -64,8 +65,11 @@ void draw() {
     popMatrix();
   }
   
+//  ball.move();
   ball.create();
-  ball.move();
+  
+  
+  translate(width/2, height/2, -100);
   
 
 }
@@ -91,24 +95,32 @@ class Ball {
   void create() {
     fill(col);
     noStroke();
+//    pushMatrix();
+    move();
     translate(x,y,-z);
+    
+
     sphere(r);
+//    popMatrix();
+    
+    println("screenX: " + modelX(x,y,z) + " screenY: "+ modelY(x,y,z) + " screenZ: " + modelZ(x,y,z));
+    println("x:       " + x + " y:         " + y + " z:          " + z);
   }
   
   void move() {
     
-    if(screenX(x,y,z) > width*4) {
+    if(modelX(x,y,z) > width*2) {
       speedX *= -1;
     }
-    if(screenX(x,y,z) < 0) {
+    if(modelX(x,y,z) < -width) {
       speedX *= -1;
     }
     
     
-    if(screenX(x,y,z) > height*4) {
+    if(modelY(x,y,z) > height*2) {
       speedY *= -1;
     }
-    if(screenX(x,y,z) < 0) {
+    if(modelY(x,y,z) < -height) {
       speedY *= -1;
     }
     
@@ -123,5 +135,6 @@ class Ball {
     x += speedX;
     y += speedY;
     z += speedZ;
+    
   }
 }
