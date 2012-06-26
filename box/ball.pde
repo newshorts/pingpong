@@ -3,7 +3,12 @@ class Ball {
   float x = 200, y = 200, z = -100, r = 100;
   color col = color(255);
   
-  float speedX = 1, speedY = 1, speedZ = 1;
+  float speedX = 2, speedY = 2, speedZ = 10;
+  
+  // y = ma+b
+//  b = bounds.y/2;
+//  m = sin(x);
+//  a = bounds.y/2;
   
   Ball(PVector bounds) {
     this.bounds = bounds;
@@ -40,7 +45,7 @@ class Ball {
     }
     
     x += speedX;
-    y += speedY;
+    y += sin(speedY);
     z += speedZ;
   }
   
