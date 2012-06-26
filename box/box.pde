@@ -15,7 +15,7 @@ void draw() {
   
   // Center in display window
   
-  translate(width/2, height/2, -1400);
+  translate(width/2, height/2, -1000);
 //  rotateX(radians(-60));
   
   background(0);
@@ -27,7 +27,7 @@ void draw() {
 //  pushMatrix();
   stage.create();
 //  popMatrix();
-  ball.step();
+//  ball.step();
   ball.create();
     
 }

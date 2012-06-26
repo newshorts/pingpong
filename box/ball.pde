@@ -7,7 +7,7 @@ class Ball {
   
   Ball(PVector bounds) {
     this.bounds = bounds;
-    velocity = new PVector(10,15,15);
+    velocity = new PVector(10,15,25);
   }
   
   Ball(PVector bounds, float x, float y, float z, color col, float r) {
@@ -20,6 +20,7 @@ class Ball {
   }
   
   void create () {
+    step();
     fill(col);
     noStroke();
     translate(x, y, -z);
@@ -37,40 +38,34 @@ class Ball {
   void wallCollisions() {
     
     // x
-    if(x > (bounds.x - r)) {
-      x = bounds.x - r;
+    if(x > (bounds.x/2)) {
       velocity.x *= -1;
       velocity.x *= damping;
     }
     
-    if(x < r) {
-      x = r;
+    if(x < -(bounds.x/2)) {
       velocity.x *= -1;
       velocity.x *= damping;
     }
     
     // y
-    if(y > (bounds.y - r)) {
-      y = bounds.y - r;
+    if(y > (bounds.y)) {
       velocity.y *= -1;
       velocity.y *= damping;
     }
     
-    if(y < r) {
-      y = r;
+    if(y < -(bounds.y)) {
       velocity.y *= -1;
       velocity.y *= damping;
     }
     
     // z
-    if(z > (bounds.z - r)) {
-      z = bounds.z - r;
+    if(z > (bounds.z/2)) {
       velocity.z *= -1;
       velocity.z *= damping;
     }
     
-    if(z < r) {
-      z = r;
+    if(z < -(bounds.z/2)) {
       velocity.z *= -1;
       velocity.z *= damping;
     }
