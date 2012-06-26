@@ -1,11 +1,11 @@
 class Ball {
   PVector bounds;
-  float x = 200, y = 200, z = -100, r = 100;
+  float x = 20, y = 20, z = -100, r = 100;
   color col = color(255);
   
   float speedX = 2, speedY = 2, speedZ = 10;
   
-  float theta = 0.0;
+  float theta = 0.0, gravity = 2;
   
   // y = ma+b
 //  b = bounds.y/2;
@@ -39,6 +39,7 @@ class Ball {
     }
     if (y > bounds.y/2 || y < -bounds.y/2){
       speedY *= -1;
+//      speedY = 2;
       println("hit the boundary y: " + y);
     }
     if (z > bounds.z/2 || z < -bounds.z/2){
@@ -49,8 +50,12 @@ class Ball {
     theta += 0.02;
     println("value of theta: " + theta);
     
-    x = (cos(theta) * bounds.y/2);
-    y = (sin(theta) * bounds.y/2);
+    speedY += gravity;
+    
+    // to curve the ball
+    x = (sin(theta) * bounds.x/2) + speedX;
+//    y = (cos(theta) * bounds.y/2) + speedY;
+    y += speedY;
     z += speedZ;
   }
   
