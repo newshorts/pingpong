@@ -5,6 +5,8 @@ class Ball {
   
   float speedX = 2, speedY = 2, speedZ = 10;
   
+  float theta = 0.0;
+  
   // y = ma+b
 //  b = bounds.y/2;
 //  m = sin(x);
@@ -44,8 +46,11 @@ class Ball {
       println("hit the boundary z: " + z);
     }
     
-    x += speedX;
-    y += sin(speedY);
+    theta += 0.02;
+    println("value of theta: " + theta);
+    
+    x = (cos(theta) * bounds.y/2);
+    y = (sin(theta) * bounds.y/2);
     z += speedZ;
   }
   
