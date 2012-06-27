@@ -27,8 +27,6 @@ void setup() {
 
 void draw() {
   
-  
-  
   // Center in display window
   translate(width/2, height/2, -1500);
   // if the user turned on the angled view
@@ -40,15 +38,18 @@ void draw() {
   lights();
   noFill();
   smooth();
-  
   // if the user turned on borders
   if(b) {
     stroke(255);
   }
   
   stage.create();
-
   ball.create();
+  
+  if(z) {
+    fill(255, 255, 255, 100);
+    instructions.loadInstructions();
+  }
   
   if(keyPressed) {
     if(key == 'a' || key == 'A') {
@@ -72,12 +73,6 @@ void draw() {
     }
   }
   
-  if(z) {
-    fill(255, 255, 255, 100);
-    instructions.loadInstructions();
-  }
-  
-    
 }
 
 
