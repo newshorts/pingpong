@@ -9,7 +9,7 @@ Instructions instructions = new Instructions();
 // a = angled view
 // b = borders
 // c = curve
-boolean a = false, b = false, c = false, g = false, z = false;
+boolean a = false, b = false, c = false, g = false, z = true;
 
 void setup() {
   // set window
