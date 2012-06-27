@@ -16,11 +16,17 @@ class Instructions {
     String sc = "Press 'c' to curve the ball.";
     text(sc, 15, 60);
     
+    String sd = "Press 'd' to add damping.";
+    text(sd, 15, 80);
+    
     String sg = "Press 'g' to turn gravity on and off.";
-    text(sg, 15, 80);
+    text(sg, 15, 100);
+    
+    String st = "Press 't' to show the table.";
+    text(st, 15, 120);
     
     String sz = "Press 'z' to toggle these instructions.";
-    text(sz, 15, 100);
+    text(sz, 15, 140);
   }
 }
 

@@ -46,11 +46,27 @@ class Cube{
   void create(){
     // Draw cube
     for (int i=0; i<6; i++){
-      beginShape(QUADS);
-      for (int j=0; j<4; j++){
-        vertex(vertices[j+4*i].x, vertices[j+4*i].y, vertices[j+4*i].z);
+      // if its the bottom load the ping pong table
+      if(i == 5) {
+        if(t) {
+          noStroke();  
+        }
+        beginShape(QUADS);
+        if(t) {
+          texture(pingpong);
+        }
+        for (int j=0; j<4; j++){
+          vertex(vertices[j+4*i].x, vertices[j+4*i].y, vertices[j+4*i].z);
+        }
+        endShape();
+      } else {
+        beginShape(QUADS);
+        for (int j=0; j<4; j++){
+          vertex(vertices[j+4*i].x, vertices[j+4*i].y, vertices[j+4*i].z);
+        }
+        endShape();
       }
-      endShape();
+      
     }
   }
   void create(color[]quadBG){

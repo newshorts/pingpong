@@ -3,7 +3,7 @@ class Ball {
   float x = 20, y = 20, z = -100, r = 100;
   color col = color(255);
   
-  float theta = 0.0, gravity = 0.9, damping = 1;
+  float theta = 0.0, gravity = 0.9, damping;
   
   Ball(PVector bounds) {
     this.bounds = bounds;
@@ -44,15 +44,21 @@ class Ball {
     
   void wallCollisions() {
     
+    if(d) {
+      damping = 0.95;
+    } else {
+      damping = 1;
+    }
+    
     // x
     if(x > (bounds.x/2)) {
       velocity.x *= -1;
-//      velocity.x *= damping;
+      velocity.x *= damping;
     }
     
     if(x < -(bounds.x/2)) {
       velocity.x *= -1;
-//      velocity.x *= damping;
+      velocity.x *= damping;
     }
     
     // y
@@ -77,12 +83,12 @@ class Ball {
     // z
     if(z > (bounds.z/2)) {
       velocity.z *= -1;
-//      velocity.z *= damping;
+      velocity.z *= damping;
     }
     
     if(z < -(bounds.z/2)) {
       velocity.z *= -1;
-//      velocity.z *= damping;
+      velocity.z *= damping;
     }
     
   }  
