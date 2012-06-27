@@ -30,16 +30,14 @@ class Ball {
   void step() {
     wallCollisions();
     
-    velocity.y += gravity;
-    
-    println("velocity Y: " + velocity.y + " y: " + y + " bounds: " + bounds.y/2);
-    
-    if(y > bounds.y/2) {
-      velocity.y *= -0.95;
-      y = bounds.y/2;
+    // user has selected curve
+    if(c) {
+      theta += 0.03;  
+      x = (sin(theta) * bounds.x/2) + velocity.x;
+    } else {
+      x += velocity.x;
     }
     
-    x += velocity.x;
     y += velocity.y;
     z += velocity.z;
   }
@@ -58,15 +56,23 @@ class Ball {
     }
     
     // y
-//    if(y > (bounds.y/2)) {
-//      velocity.y *= -1;
-//      velocity.y *= damping;
-//    }
-//    
-//    if(y < -(bounds.y/2)) {
-//      velocity.y *= -1;
-//      velocity.y *= damping;
-//    }
+    if(g) {
+      velocity.y += gravity;
+      if(y > bounds.y/2) {
+        velocity.y *= -0.95;
+        y = bounds.y/2;
+      }
+    } else {
+      if(y > (bounds.y/2)) {
+        velocity.y *= -1;
+        velocity.y *= damping;
+      }
+      
+      if(y < -(bounds.y/2)) {
+        velocity.y *= -1;
+        velocity.y *= damping;
+      }
+    }
     
     // z
     if(z > (bounds.z/2)) {
