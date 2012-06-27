@@ -7,7 +7,7 @@ class Ball {
   
   Ball(PVector bounds) {
     this.bounds = bounds;
-    velocity = new PVector(10,15,25);
+    velocity = new PVector(10,0,25);
   }
   
   Ball(PVector bounds, float x, float y, float z, color col, float r) {
@@ -30,44 +30,53 @@ class Ball {
   void step() {
     wallCollisions();
     
+    velocity.y += gravity;
+    
+    println("velocity Y: " + velocity.y + " y: " + y + " bounds: " + bounds.y/2);
+    
+    if(y > bounds.y/2) {
+      velocity.y *= -0.95;
+      y = bounds.y/2;
+    }
+    
     x += velocity.x;
     y += velocity.y;
     z += velocity.z;
   }
-  
+    
   void wallCollisions() {
     
     // x
     if(x > (bounds.x/2)) {
       velocity.x *= -1;
-      velocity.x *= damping;
+//      velocity.x *= damping;
     }
     
     if(x < -(bounds.x/2)) {
       velocity.x *= -1;
-      velocity.x *= damping;
+//      velocity.x *= damping;
     }
     
     // y
-    if(y > (bounds.y)) {
-      velocity.y *= -1;
-      velocity.y *= damping;
-    }
-    
-    if(y < -(bounds.y)) {
-      velocity.y *= -1;
-      velocity.y *= damping;
-    }
+//    if(y > (bounds.y/2)) {
+//      velocity.y *= -1;
+//      velocity.y *= damping;
+//    }
+//    
+//    if(y < -(bounds.y/2)) {
+//      velocity.y *= -1;
+//      velocity.y *= damping;
+//    }
     
     // z
     if(z > (bounds.z/2)) {
       velocity.z *= -1;
-      velocity.z *= damping;
+//      velocity.z *= damping;
     }
     
     if(z < -(bounds.z/2)) {
       velocity.z *= -1;
-      velocity.z *= damping;
+//      velocity.z *= damping;
     }
     
   }  

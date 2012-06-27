@@ -15,7 +15,7 @@ void draw() {
   
   // Center in display window
   
-  translate(width/2, height/2, -1000);
+  translate(width/2, height/2, -1500);
 //  rotateX(radians(-60));
   
   background(0);
