@@ -1,6 +1,5 @@
 PVector[] vertices = new PVector[24];
 PFont font;
-PImage pingpong;
 
 Cube stage;
 Ball ball;
@@ -10,11 +9,11 @@ Instructions instructions = new Instructions();
 // a = angled view
 // b = borders
 // c = curve
-boolean a = false, b = false, c = false, d = false, g = false, t = false, z = false;
+boolean a = false, b = true, c = false, g = true, z = true;
 
 void setup() {
   // set window
-  size(1280, 640, P3D);
+  size(1200, 700, P3D);
   float w = width*2, h = height*2, d = 2000;
   
   // set stage and ball
@@ -24,9 +23,6 @@ void setup() {
   font = loadFont("HelveticaNeue-UltraLight-16.vlw");   
   textFont(font,16); 
   textMode(SCREEN);
-  
-  pingpong = loadImage("images/pingpongtable.jpg");
-  textureMode(NORMALIZED);
 }
 
 void draw() {
@@ -68,23 +64,15 @@ void draw() {
       c = (c) ? false : true;
     }
     
-    if(key == 'd' || key == 'D') {
-      d = (d) ? false : true;
-    }
-    
     if(key == 'g' || key == 'G') {
       g = (g) ? false : true;
-    }
-    
-    if(key == 't' || key == 'T') {
-      t = (t) ? false : true;
     }
     
     if(key == 'z') {
       z = (z) ? false : true;
     }
   }
-    
+  
 }
 
 
